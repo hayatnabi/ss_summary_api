@@ -22,8 +22,10 @@ class Api::V1::ScreenshotSummaryController < ApplicationController
       page_type: page_type
     }
   ensure
-    tempfile.close
-    tempfile.unlink
+    if params[:image] != nil
+      tempfile.close
+      tempfile.unlink
+    end
   end
 
   private
