@@ -216,6 +216,7 @@ GEM
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
+    rtesseract (3.1.4)
     rubocop (1.78.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -302,6 +303,7 @@ DEPENDENCIES
   kamal
   puma (>= 5.0)
   rails (~> 8.0.2)
+  rtesseract
   rubocop-rails-omakase
   solid_cable
   solid_cache
