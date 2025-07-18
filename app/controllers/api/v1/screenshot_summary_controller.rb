@@ -10,8 +10,9 @@ class Api::V1::ScreenshotSummaryController < ApplicationController
     tempfile.write(params[:image].read)
     tempfile.rewind
 
+    # image = RTesseract.new(tempfile.path, lang: 'urd+eng+ara+hin+tam+ben')
     image = RTesseract.new(tempfile.path)
-    extracted_text = image.to_s
+    extracted_text = image.to_s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '')
 
     summary = summarize_text(extracted_text)
     page_type = detect_page_type(extracted_text)
