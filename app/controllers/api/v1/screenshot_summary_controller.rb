@@ -14,6 +14,7 @@ class Api::V1::ScreenshotSummaryController < ApplicationController
     image = RTesseract.new(tempfile.path)
     extracted_text = image.to_s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '')
 
+    return render json: { error: "No text extracted from image" }, status: :unprocessable_entity if extracted_text.strip.empty?
     summary = summarize_text(extracted_text)
     page_type = detect_page_type(extracted_text)
 
